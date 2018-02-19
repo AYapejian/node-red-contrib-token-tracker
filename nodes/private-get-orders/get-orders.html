@@ -1,0 +1,74 @@
+<script type="text/javascript">
+    RED.nodes.registerType('get-orders',{
+        category: 'cryptocurrency',
+        color:    '#4caf50',
+        defaults: {
+            name:      { value: '' },
+            exchange:  { value: '', type: 'config-exchange' },
+            ordertype: { value: 'both' }
+        },
+        inputs:  1,
+        outputs: 1,
+        icon:    'file.png',
+        label: function() {
+            return this.name || 'get-orders';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="get-orders">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-exchange"><i class="icon-tag"></i> Exchange</label>
+        <input type="text" id="node-input-exchange">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-ordertype"><i class="fa fa-keyboard-o"></i> Order Type</label>
+        <select id="node-input-ordertype">
+            <option value="both" selected>Open & Closed</option>
+            <option value="open">Open</option>
+            <option value="closed">Closed</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="get-orders">
+    <p>Fetch open and closed orders from exchanges</p>
+
+    <h3>Config</h3>
+        <dl class="message-properties">
+                <dt>Ordertype<span class="property-type">string</span></dt>
+                <dd>Defaults to both closed and open, can limit to just open or just closed orders</dd>
+        </dl>
+
+    <h3>Outputs</h3>
+        <dl class="message-properties">
+            <dt>payload<span class="property-type">object|array</span></dt>
+            <dd>By default will be an object with <code>open</code> and <code>closed</code> properties, each an array of order objects with properties below</dd>
+
+            <dt>id<span class="property-type">string</span></dt>
+            <dt>timestamp<span class="property-type">number</span></dt>
+            <dt>datetime<span class="property-type">iso string</span></dt>
+            <dt>status<span class="property-type">string</span></dt>
+            <dt>symbol<span class="property-type">string</span></dt>
+            <dt>type<span class="property-type">string</span></dt>
+            <dt>side<span class="property-type">string</span></dt>
+            <dt>price<span class="property-type">number</span></dt>
+            <dt>cost<span class="property-type">number</span></dt>
+            <dt>amount<span class="property-type">number</span></dt>
+            <dt>filled<span class="property-type">number</span></dt>
+            <dt>remaining<span class="property-type">number</span></dt>
+            <dt>fee<span class="property-type">object</span></dt>
+
+            <dt>info<span class="property-type">object</span></dt>
+            <dd>Original exchange specific order data</dd>
+        </dl>
+
+    <h3>Details</h3>
+        <p>If limiting to just open or just closed opens then <code>payload</code> will be an array of order objects (opposed to orders being nexted under open/closed keys) </p>
+</script>

@@ -1,0 +1,638 @@
+[
+    {
+        "id": "5f12ed15.817444",
+        "type": "tab",
+        "label": "Flow 1"
+    },
+    {
+        "id": "8eae037c.2c178",
+        "type": "config-exchange",
+        "z": "",
+        "name": "bittrex",
+        "provider": "bittrex"
+    },
+    {
+        "id": "7dd40b6.bd938f4",
+        "type": "config-exchange",
+        "z": "",
+        "name": "kraken",
+        "provider": "kraken"
+    },
+    {
+        "id": "4b829514.0dd5ac",
+        "type": "config-exchange",
+        "z": "",
+        "name": "binance",
+        "provider": "binance"
+    },
+    {
+        "id": "b75b63db.09d6",
+        "type": "config-exchange",
+        "z": "",
+        "name": "gdax",
+        "provider": "gdax"
+    },
+    {
+        "id": "b1953d4a.220b6",
+        "type": "config-exchange",
+        "z": "",
+        "name": "poloniex",
+        "provider": "poloniex"
+    },
+    {
+        "id": "b1b14b3f.1e6c18",
+        "type": "get-market",
+        "z": "5f12ed15.817444",
+        "name": "Gdax Markets",
+        "exchange": "b75b63db.09d6",
+        "x": 580,
+        "y": 180,
+        "wires": [
+            [
+                "e89e7718.f5bd88"
+            ]
+        ]
+    },
+    {
+        "id": "3a125112.2f56ee",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 180,
+        "wires": [
+            [
+                "b1b14b3f.1e6c18"
+            ]
+        ]
+    },
+    {
+        "id": "a2469332.ffd3a",
+        "type": "get-balance",
+        "z": "5f12ed15.817444",
+        "name": "get balance | bittrex",
+        "exchange": "8eae037c.2c178",
+        "x": 590,
+        "y": 320,
+        "wires": [
+            [
+                "dd7d6f87.6a51b"
+            ]
+        ]
+    },
+    {
+        "id": "145e5780.d8b0e9",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 320,
+        "wires": [
+            [
+                "a2469332.ffd3a"
+            ]
+        ]
+    },
+    {
+        "id": "fa6ad7c4.bcb3e8",
+        "type": "get-balance",
+        "z": "5f12ed15.817444",
+        "name": "get balance | kraken",
+        "exchange": "7dd40b6.bd938f4",
+        "x": 600,
+        "y": 360,
+        "wires": [
+            [
+                "eb5fd74b.3f0e58"
+            ]
+        ]
+    },
+    {
+        "id": "afd39077.7cff3",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 360,
+        "wires": [
+            [
+                "fa6ad7c4.bcb3e8"
+            ]
+        ]
+    },
+    {
+        "id": "dd7d6f87.6a51b",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 790,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "eb5fd74b.3f0e58",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 790,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "9711bd4f.ef016",
+        "type": "get-balance",
+        "z": "5f12ed15.817444",
+        "name": "get balance | binance",
+        "exchange": "4b829514.0dd5ac",
+        "x": 600,
+        "y": 400,
+        "wires": [
+            [
+                "7bd52727.32dac8"
+            ]
+        ]
+    },
+    {
+        "id": "70161494.8a605c",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "9711bd4f.ef016"
+            ]
+        ]
+    },
+    {
+        "id": "7bd52727.32dac8",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 790,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "dc13d344.2cc2a",
+        "type": "get-balance",
+        "z": "5f12ed15.817444",
+        "name": "get balance | gdax",
+        "exchange": "b75b63db.09d6",
+        "x": 590,
+        "y": 280,
+        "wires": [
+            [
+                "735254ce.471c8c"
+            ]
+        ]
+    },
+    {
+        "id": "468e0beb.6e4a54",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "dc13d344.2cc2a"
+            ]
+        ]
+    },
+    {
+        "id": "735254ce.471c8c",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 790,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "76659d25.77e8b4",
+        "type": "get-balance",
+        "z": "5f12ed15.817444",
+        "name": "get balance | poloniex",
+        "exchange": "b1953d4a.220b6",
+        "x": 600,
+        "y": 440,
+        "wires": [
+            [
+                "d8f436f1.fa1058"
+            ]
+        ]
+    },
+    {
+        "id": "2637bf00.0b4772",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 440,
+        "wires": [
+            [
+                "76659d25.77e8b4"
+            ]
+        ]
+    },
+    {
+        "id": "d8f436f1.fa1058",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 790,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "68c3aa3d.a11a24",
+        "type": "get-orders",
+        "z": "5f12ed15.817444",
+        "name": "get orders | gdax",
+        "exchange": "b75b63db.09d6",
+        "ordertype": "both",
+        "x": 630,
+        "y": 540,
+        "wires": [
+            [
+                "4fe352a6.aaac9c"
+            ]
+        ]
+    },
+    {
+        "id": "576d15dc.9dc2ec",
+        "type": "get-orders",
+        "z": "5f12ed15.817444",
+        "name": "get orders | bittrex",
+        "exchange": "8eae037c.2c178",
+        "ordertype": "both",
+        "x": 630,
+        "y": 580,
+        "wires": [
+            [
+                "c015bf79.42813"
+            ]
+        ]
+    },
+    {
+        "id": "e0bc01d4.34e76",
+        "type": "get-orders",
+        "z": "5f12ed15.817444",
+        "name": "get orders | kraken",
+        "exchange": "7dd40b6.bd938f4",
+        "ordertype": "both",
+        "x": 630,
+        "y": 620,
+        "wires": [
+            [
+                "9c991cb8.d2b"
+            ]
+        ]
+    },
+    {
+        "id": "fc3aea0f.9e7108",
+        "type": "get-orders",
+        "z": "5f12ed15.817444",
+        "name": "get orders | binance",
+        "exchange": "4b829514.0dd5ac",
+        "x": 640,
+        "y": 660,
+        "wires": [
+            [
+                "bd8ebdc4.be6c7"
+            ]
+        ]
+    },
+    {
+        "id": "12b36f1d.2e7db1",
+        "type": "get-orders",
+        "z": "5f12ed15.817444",
+        "name": "get orders | poloniex",
+        "exchange": "b1953d4a.220b6",
+        "x": 640,
+        "y": 700,
+        "wires": [
+            [
+                "d5fd50b4.49856"
+            ]
+        ]
+    },
+    {
+        "id": "685a4b19.ba7164",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 580,
+        "wires": [
+            [
+                "576d15dc.9dc2ec"
+            ]
+        ]
+    },
+    {
+        "id": "a74310e7.4b57f",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 620,
+        "wires": [
+            [
+                "e0bc01d4.34e76"
+            ]
+        ]
+    },
+    {
+        "id": "bb4fd4e9.ba1798",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 660,
+        "wires": [
+            [
+                "fc3aea0f.9e7108"
+            ]
+        ]
+    },
+    {
+        "id": "3ad55390.aaeeac",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 540,
+        "wires": [
+            [
+                "68c3aa3d.a11a24"
+            ]
+        ]
+    },
+    {
+        "id": "42de1b85.5bacd4",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 400,
+        "y": 700,
+        "wires": [
+            [
+                "12b36f1d.2e7db1"
+            ]
+        ]
+    },
+    {
+        "id": "c015bf79.42813",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 850,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "9c991cb8.d2b",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 850,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "bd8ebdc4.be6c7",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 850,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "4fe352a6.aaac9c",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 850,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "d5fd50b4.49856",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 850,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "198ac5e.3bde13a",
+        "type": "get-ticker",
+        "z": "5f12ed15.817444",
+        "name": "get ticker | gdax",
+        "exchange": "b75b63db.09d6",
+        "symbol": "BTC/USD",
+        "x": 620,
+        "y": 820,
+        "wires": [
+            [
+                "9328b26f.7a76f"
+            ]
+        ]
+    },
+    {
+        "id": "9328b26f.7a76f",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 850,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "2ba10ca5.f241e4",
+        "type": "inject",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 820,
+        "wires": [
+            [
+                "2d97d543.cd2c0a"
+            ]
+        ]
+    },
+    {
+        "id": "e89e7718.f5bd88",
+        "type": "debug",
+        "z": "5f12ed15.817444",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 770,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2d97d543.cd2c0a",
+        "type": "function",
+        "z": "5f12ed15.817444",
+        "name": "ETH/USD",
+        "func": "msg.symbol = 'ETH/USD';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 820,
+        "wires": [
+            [
+                "198ac5e.3bde13a"
+            ]
+        ]
+    }
+]

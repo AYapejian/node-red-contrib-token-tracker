@@ -1,0 +1,25 @@
+{
+     "colours": true,
+     "delay": "300",
+     "verbose": true,
+     "watch":   [
+         "/data/node_modules/node-red-contrib-token-tracker"
+     ],
+     "ignore": [
+         "/data/node_modules/node-red-contrib-token-tracker/node_modules",
+         "/data/node_modules/node-red-contrib-token-tracker/_docker",
+         "/data/node_modules/node-red-contrib-token-tracker/_docker-volumes"
+     ],
+     "env": {
+         "DEBUG": "node-red*,ccxt*",
+         "NODE_ENV": "development"
+     },
+     "ext": "js,json,html",
+     "ignoreRoot": [
+         "**/.git/**",
+         "**/.nyc_output/**",
+         "**/.sass-cache/**",
+         "**/bower_components/**",
+         "**/coverage/**"
+     ]
+ }

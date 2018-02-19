@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('get-market',{
+        category: 'cryptocurrency',
+        color:    '#81c784',
+        defaults: {
+            name:     { value: '' },
+            exchange: { value: '', type: 'config-exchange' }
+        },
+        inputs:  1,
+        outputs: 1,
+        icon:    'file.png',
+        label: function() {
+            return this.name || 'get-market';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="get-market">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-exchange"><i class="icon-tag"></i> Exchange Config</label>
+        <input type="text" id="node-input-exchange">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="get-market">
+    <p>A simple node that converts the message payloads into all get-market characters</p>
+</script>

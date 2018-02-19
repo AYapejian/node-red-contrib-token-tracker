@@ -1,0 +1,84 @@
+<script type="text/javascript">
+    RED.nodes.registerType('config-exchange', {
+        category: 'config',
+        defaults: {
+            name:     { value:'',  required:true },
+            provider: { value: '', required: true }
+        },
+        credentials: {
+            key:        { type: 'text' },
+            secret:     { type: 'password' },
+            passphrase: { type: 'password' }
+        },
+        label: function() {
+            return `${this.name}`;
+        },
+        oneditprepare: function() {
+            const NODE = this;
+            const $providers = $('#node-config-input-provider');
+
+            const setupAutocomplete = (node) => {
+                $.get('/token-tracker/exchange-providers').done((providers) => {
+                    NODE.exchangeProviders = providers;
+                    $providers.autocomplete({ source: NODE.exchangeProviders, minLength: 0 });
+                })
+                .fail((err) => RED.notify(err.responseText, 'error'));
+            };
+
+            setupAutocomplete();
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="config-exchange">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-provider"><i class="fa fa-tag"></i> Provider</label>
+        <input type="text" id="node-config-input-provider" placeholder="gdax" />
+    </div>
+
+    <!-- Encrypted Fields -->
+
+    <div class="form-row">
+        <label for="node-config-input-key"><i class="icon-tag"></i> API Key</label>
+        <input type="text" id="node-config-input-key">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-secret"><i class="icon-tag"></i> API Secret</label>
+        <input type="password" id="node-config-input-secret">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-passphrase"><i class="icon-tag"></i> API Passphrase</label>
+        <input type="password" id="node-config-input-passphrase">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="config-exchange">
+    <p>Cryptocurrency Exchange Config</p>
+
+     <h3>Config</h3>
+     <dl class="message-properties">
+             <dt>
+                 Name       <span class="property-type">string</span>
+             </dt>
+             <dd>Label for this configuration, see details below for implications</dd>
+             <dt>
+                 Provider       <span class="property-type">string</span>
+             </dt>
+             <dd>A supported exchange name</dd>
+             <dt class="optional">
+                 API key,secret,passphrase       <span class="property-type">string</span>
+             </dt>
+             <dd>API credentials, optional if not using any of the 'private' type nodes</dd>
+     </dl>
+
+     <h3>Details</h3>
+     <p>Each node operates against a configured exchange, this is the definition for each exchange</p>
+
+     <h4>Context</h4>
+     <p>Each exchange config will also make some data available on the global context.  The <code>Name</code> value in this node is used as a, camelcased, namespace for those values and all exchange config will be under the main global namespace <code>token-tracker</code></p>
+ </script>

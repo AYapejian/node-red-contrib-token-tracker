@@ -1,0 +1,66 @@
+{
+  "name": "node-red-contrib-token-tracker",
+  "version": "0.1.0",
+  "description": "Cryptocurrency exchange integration for node-red",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run docker:up",
+    "dev:clean": "npm run docker:down",
+    "test": "tape __tests__/**/*.spec.js | tap-min",
+    "test:debug": "node --inspect-brk=0.0.0.0:9124 node_modules/.bin/tape __tests__/**/*.spec.js",
+    "test:watch": "nodemon -w __tests__/ -w lib/ -w nodes/ --exec 'node node_modules/.bin/tape __tests__/**/*.spec.js'",
+    "docker:up": "npm run docker -- up --build --abort-on-container-exit --remove-orphans",
+    "docker:down": "npm run docker -- down -vt5 && npm run docker -- rm -fv",
+    "docker:restart": "npm run docker -- restart",
+    "docker:logs": "npm run docker -- logs -f && true",
+    "docker": "docker-compose -f _docker/docker-compose.yml"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "nodemon": "^1.14.12",
+    "should": "^13.2.1",
+    "sinon": "^4.2.2",
+    "supertest": "^3.0.0",
+    "tap-min": "^1.2.2",
+    "tape": "^4.8.0"
+  },
+  "node-red": {
+    "nodes": {
+      "config-exchange": "nodes/config-exchange/config-exchange.js",
+      "get-market": "nodes/public-get-market/get-market.js",
+      "get-ticker": "nodes/public-get-ticker/get-ticker.js",
+      "get-balance": "nodes/private-get-balance/get-balance.js",
+      "get-orders": "nodes/private-get-orders/get-orders.js"
+    }
+  },
+  "author": "Ara Yapejian",
+  "homepage": "https://github.com/AYapejian/node-red-contrib-token-tracker",
+   "bugs": {
+     "url": "https://github.com/AYapejian/node-red-contrib-token-tracker/issues"
+   },
+  "repository": {
+     "type": "git",
+     "url": "https://github.com/AYapejian/node-red-contrib-token-tracker"
+   },
+   "license": "MIT",
+   "keywords": [
+     "node-red",
+     "cryptocurrency",
+     "bitcoin",
+     "ethereum",
+     "exchange"
+   ],
+  "dependencies": {
+    "ccxt": "^1.10.1138",
+    "clone-deep": "^3.0.1",
+    "deepmerge": "^2.0.1",
+    "joi": "^13.1.1",
+    "node-red": "node-red/node-red#0.18.2",
+    "selectn": "^1.1.2"
+  }
+}

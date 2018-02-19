@@ -1,0 +1,24 @@
+# No .editorconfig files above the root directory
+root = true
+
+[*]
+indent_style                = space
+end_of_line                 = lf
+charset                     = utf-8
+trim_trailing_whitespace    = true
+insert_final_newline        = true
+indent_size                 = 4
+
+# These may not be supported by your editorconfig plugin, see https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+curly_bracket_next_line     = false
+spaces_around_operators     = true
+spaces_around_brackets      = inside
+continuation_indent_size    = 2
+
+# Files to use 2 spaces indentation
+[*.{yaml}]
+indent_size = 2
+
+# Use 4 spaces for indentation in Markdown files
+[*.md]
+indent_size                 = 4

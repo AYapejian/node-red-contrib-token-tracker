@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  node-red:
+    build:
+      context: ./node-red-docker
+    # command: /app/node_modules/.bin/nodemon --inspect=0.0.0.0:9229 --config /app/nodemon.json /app/node_modules/node-red/red.js -- -v --userDir /data $FLOWS
+    command: npm run dev:watch
+    volumes:
+      - '..:/data/node_modules/node-red-contrib-token-tracker'
+      - './node-red-docker/root-fs/data/flows.json:/data/flows.json'   # Map flows file for easy commitable examples building
+      - '/var/db/timezone/zoneinfo/America/New_York:/etc/localtime:ro'
+    ports:
+      - 1880:1880
+      - 9229:9229

@@ -1,0 +1,71 @@
+<script type="text/javascript">
+    RED.nodes.registerType('get-ticker',{
+        category: 'cryptocurrency',
+        color:    '#81c784',
+        defaults: {
+            name:     { value: '' },
+            exchange: { value: '', type: 'config-exchange' },
+            symbol:   { value: '' }
+        },
+        inputs:  1,
+        outputs: 1,
+        icon:    'file.png',
+        label: function() {
+            return this.name || 'get-ticker';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="get-ticker">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-exchange"><i class="icon-tag"></i> Exchange Config</label>
+        <input type="text" id="node-input-exchange">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-symbol"><i class="icon-tag"></i> Symbol</label>
+        <input type="text" id="node-input-symbol">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="get-ticker">
+    <p>Fetch ticker data from exchange</p>
+
+    <h3>Config</h3>
+        <dl class="message-properties">
+                <dt>Symbol<span class="property-type">string</span></dt>
+                <dd>Optionally set the symbol to fetch here</dd>
+        </dl>
+
+    <h3>Inputs</h3>
+        <dl class="message-properties">
+            <dt>msg.symbol<span class="property-type">string</span></dt>
+            <dd>Sets symbol to be fetched, will override config setting if set</dd>
+        </dl>
+
+    <h3>Outputs</h3>
+        <dl class="message-properties">
+            <dt>payload<span class="property-type">object</span></dt>
+            <dd>Contains all fetched ticker data</dd>
+
+            <dt>payload.symbol<span class="property-type">string</span></dt>
+            <dt>payload.timestamp<span class="property-type">number</span></dt>
+            <dt>payload.datetime<span class="property-type">iso string</span></dt>
+            <dt>payload.bid<span class="property-type">number</span></dt>
+            <dt>payload.ask<span class="property-type">number</span></dt>
+            <dt>payload.last<span class="property-type">number</span></dt>
+            <dt>payload.baseVolume<span class="property-type">number</span></dt>
+
+            <dt>payload.info<span class="property-type">object</span></dt>
+            <dd>Original exchange specific response data</dd>
+        </dl>
+
+    <h3>Details</h3>
+        <p>Fetch ticker data from an exchange.  The symbol must be provided either as incoming <code>msg.symbol</code> or via the node "Symbol" config setting</p>
+        <p>NOTE: If the symbol is not supported by the exchange an error will be thrown.  You can check the global context for the supported symbols of a given exchange you setup</p>
+</script>
